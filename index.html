@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Biss</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js">defer</script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="logo">
+                <h2>BoutiqueBliss</h2>
+            </a>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="invoice.html">Invoice</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="checkout.html">Check Out</a></li>
+            </ul>
+            <button class="login-btn">LOG IN</button>
+            </nav>
+    </header>
+    <!--Popup Form-->
+     <div class="form-popup">
+        <span class="close-btn material-symbols-rounded">close</span>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2>Welcome Back</h2>
+                <p>Please login in using your personal information to stay with us.</p>
+            </div>
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required> 
+                        <label>Password</label>
+                    </div>
+                    <a href="#" class="forgot-pass">Forgot password?</a>
+                    <button type="submit">Log In</button>
+                </form>
+                <div class="bottom-link">
+                    Dont have an account?
+                    <a href="#">SignUp</a>
+                </div>
+            </div> 
+        </div>
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Create Account</h2>
+                <p>To become a part of our community, please sign up using your personal information.</p>
+            </div>
+            <div class="form-content">
+                <h2>SIGNUP</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required> 
+                        <label>Create password</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            I agree the 
+                            <a href="#">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account?
+                    <a href="#">Login</a>
+                </div>
+            </div> 
+        </div>
+     </div>
+    <main>
+  <!-- Hero Section -->
+  <section class="hero-section" style="text-align:center; padding:50px 20px; background-color:#f8f8f8;">
+    <div class="hero-content">
+      <h1>Find Your Next Style Upgrade!</h1>
+      <p>Explore our exclusive collection of clothing and accessories for every season.</p>
+      <a href="#featured" class="shop-now-btn" style="display:inline-block; background-color:blueviolet; color:mineralwhite; padding:12px 24px; margin-top:20px; border-radius:5px; text-decoration:none;">Shop New Arrivals</a>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="featured" class="featured-products" style="padding:50px 20px;">
+    <h2 style="text-align:center;">✨ Featured Products</h2>
+    <div class="product-grid" style="margin-top:20px;">
+      <!-- Sample Product Card -->
+      <div class="product-card">
+        <img src="images/classic blazer.jpeg" alt="The Classic Blazer" />
+        <h3>The Classic Blazer</h3>
+        <p class="price">$79.99</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="images/denim comfort jeans.jpeg" alt="Denim Comfort Jeans" />
+        <h3>Denim Comfort Jeans</h3>
+        <p class="price">$55.00</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="images/summer floral dress.jpeg" alt="Summer Floral Dress" />
+        <h3>Summer Floral Dress</h3>
+        <p class="price">$45.50</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="newsletter-signup" style="background-color:#fff; padding:40px 20px; text-align:center;">
+    <h2>Join Our Mailing List</h2>
+    <form action="#">
+      <input type="email" placeholder="Enter your email address" required style="padding:10px; border-radius:4px; border:1px solid #ccc; width:250px;">
+      <button type="submit" style="padding:10px 20px; background-color:blueviolet; color:#fff; border:none; border-radius:4px; margin-left:10px;">Subscribe</button>
+    </form>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer style="background-color:#333; color:#fff; text-align:center; padding:20px 0; position:fixed; bottom:0; width:100%;">
+  <p>&copy; 2025 BoutiqueBliss. All rights reserved.</p>
+</footer>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const loginBtn = document.querySelector('.login-btn');
+    const popup = document.querySelector('.form-popup');
+    const closeBtn = document.querySelector('.close-btn');
+    const loginBox = document.querySelector('.form-box.login');
+    const signupBox = document.querySelector('.form-box.signup');
+    const showSignup = loginBox.querySelector('.bottom-link a');
+    const showLogin = signupBox.querySelector('.bottom-link a');
+
+    // Open popup (default to login form)
+    loginBtn.onclick = function() {
+      popup.style.display = 'block';
+      loginBox.style.display = 'flex';
+      signupBox.style.display = 'none';
+      document.body.style.overflow = 'hidden';
+    }
+    // Close popup
+    closeBtn.onclick = function() {
+      popup.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    // Switch to signup
+    showSignup.onclick = function(e) {
+      e.preventDefault();
+      loginBox.style.display = 'none';
+      signupBox.style.display = 'flex';
+    }
+    // Switch to login
+    showLogin.onclick = function(e) {
+      e.preventDefault();
+      signupBox.style.display = 'none';
+      loginBox.style.display = 'flex';
+    }
+    // Optional: close modal if user clicks outside the modal content
+    popup.onclick = function(e) {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+  });
+</script>
+</body>
+</html>

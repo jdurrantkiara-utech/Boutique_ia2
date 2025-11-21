@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BoutiqueBliss - Invoice</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="logo" />
+      <h2>BoutiqueBliss</h2>
+    </a>
+    <ul class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="invoice.html" class="active">Invoice</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="checkout.html">Check Out</a></li>
+    </ul>
+    <button class="login-btn">LOG IN</button>
+  </nav>
+</header>
+<main style="padding:100px 20px 40px; max-width:1000px; margin:auto;">
+  <h1>Invoice</h1>
+  <section style="margin-bottom: 25px;">
+    <strong>Date:</strong> November 19, 2025<br>
+    <strong>Invoice #:</strong> INV-20251119-001
+  </section>
+  <table style="width:100%; border-collapse:collapse; margin-top:20px; background:#fff;">
+    <thead>
+      <tr style="background:#eee;">
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub-Total</th>
+        <th>Discount</th>
+        <th>Tax</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 20 product rows, copy here from your cart page; sample below -->
+      <tr>
+        <td style="text-align:center;"><img src="images/red dress.jpeg" alt="Red Dress" width="60" style="border-radius:8px;"></td>
+        <td>Red Dress</td>
+        <td>$45.00</td>
+        <td>1</td>
+        <td>$45.00</td>
+        <td>$0.00</td>
+        <td>$6.75</td>
+        <td>$51.75</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><img src="images/blue top.jpeg" alt="Blue Top" width="60" style="border-radius:8px;"></td>
+        <td>Blue Top</td>
+        <td>$30.00</td>
+        <td>2</td>
+        <td>$60.00</td>
+        <td>$5.00</td>
+        <td>$8.25</td>
+        <td>$63.25</td>
+      </tr>
+      <!-- ...repeat for all 20 products... -->
+      <tr>
+        <td style="text-align:center;"><img src="images/winter coat.jpeg" alt="Winter Coat" width="60" style="border-radius:8px;"></td>
+        <td>Winter Coat</td>
+        <td>$120.00</td>
+        <td>1</td>
+        <td>$120.00</td>
+        <td>$12.00</td>
+        <td>$16.20</td>
+        <td>$124.20</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align:right; font-weight:bold;">Totals</td>
+        <td>$1285.00</td>
+        <td>$105.50</td>
+        <td>$146.63</td>
+        <td style="font-weight:bold;">$1326.13</td>
+      </tr>
+    </tfoot>
+  </table>
+  <section style="margin-top:22px;">
+    <strong>Payment Method:</strong> Credit Card<br>
+    <strong>Status:</strong> Paid
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 BoutiqueBliss. All rights reserved.</p>
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get all rows in tbody
+    const rows = document.querySelectorAll("tbody tr");
+
+    // Function to calculate totals
+    function calculateTotals() {
+      let subTotalSum = 0;
+      let discountSum = 0;
+      let taxSum = 0;
+      let totalSum = 0;
+
+      rows.forEach(row => {
+        const priceText = row.cells[2].textContent.replace('$', '');
+        const qtyText = row.cells[3].textContent;
+        const discountText = row.cells[5].textContent.replace('$', '');
+        const taxText = row.cells[6].textContent.replace('$', '');
+
+        const price = parseFloat(priceText) || 0;
+        const quantity = parseInt(qtyText) || 0;
+        const discount = parseFloat(discountText) || 0;
+        const tax = parseFloat(taxText) || 0;
+
+        const subTotal = price * quantity;
+
+        const total = subTotal - discount + tax;
+
+        subTotalSum += subTotal;
+        discountSum += discount;
+        taxSum += tax;
+        totalSum += total;
+
+        // Update Sub-Total and Total cells text content
+        row.cells[4].textContent = "$" + subTotal.toFixed(2);
+        row.cells[7].textContent = "$" + total.toFixed(2);
+      });
+
+      // Update totals in table tfoot
+      const tfoot = document.querySelector("tfoot tr");
+      tfoot.cells[4].textContent = "$" + subTotalSum.toFixed(2);
+      tfoot.cells[5].textContent = "$" + discountSum.toFixed(2);
+      tfoot.cells[6].textContent = "$" + taxSum.toFixed(2);
+      tfoot.cells[7].textContent = "$" + totalSum.toFixed(2);
+    }
+
+    // Since your invoice is not editable by inputs, simulate recalculation on page load
+    calculateTotals();
+  });
+</script>
+
+</body>
+</html>

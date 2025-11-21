@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BoutiqueBliss - Checkout</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="logo" />
+      <h2>BoutiqueBliss</h2>
+    </a>
+    <ul class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="invoice.html">Invoice</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="checkout.html" class="active">Check Out</a></li>
+    </ul>
+    <button class="login-btn">LOG IN</button>
+  </nav>
+</header>
+<main style="padding:100px 20px 40px; max-width:1000px; margin:auto;">
+  <h1>Checkout</h1>
+  <section>
+    <h2>Order Summary</h2>
+    <table style="width:100%; border-collapse:collapse; margin-top:20px; background:#fff;">
+      <thead>
+        <tr style="background:#eee;">
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Sub-Total</th>
+          <th>Discount</th>
+          <th>Tax</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Add all 20 product rows below -->
+        <tr>
+          <td style="text-align:center;"><img src="images/red dress.jpeg" alt="Red Dress" width="60" style="border-radius:8px;"></td>
+          <td>Red Dress</td>
+          <td>$45.00</td>
+          <td>1</td>
+          <td>$45.00</td>
+          <td>$0.00</td>
+          <td>$6.75</td>
+          <td>$51.75</td>
+        </tr>
+        <!-- ...more product rows... -->
+        <tr>
+          <td style="text-align:center;"><img src="images/winter coat.jpeg" alt="Winter Coat" width="60" style="border-radius:8px;"></td>
+          <td>Winter Coat</td>
+          <td>$120.00</td>
+          <td>1</td>
+          <td>$120.00</td>
+          <td>$12.00</td>
+          <td>$16.20</td>
+          <td>$124.20</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" style="text-align:right; font-weight:bold;">Totals</td>
+          <td>$1285.00</td>
+          <td>$105.50</td>
+          <td>$146.63</td>
+          <td style="font-weight:bold;">$1326.13</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+  <section style="margin-top:28px;">
+    <h2>Shipping Details</h2>
+    <form style="display:flex; flex-direction:column; gap:14px;">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required />
+      <label for="address">Address:</label>
+      <textarea id="address" rows="2" required></textarea>
+
+      <h2 style="margin-top:22px;">Payment Method</h2>
+      <select id="payment-method" required onchange="showPaymentFields()">
+        <option value="">Select Payment Method</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="wallet">Mobile Wallet</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <!-- Credit/Debit Card Payment -->
+      <div id="card-fields" style="display:none; margin-top:10px;">
+        <label for="ccname">Cardholder Name:</label>
+        <input type="text" id="ccname" />
+
+        <label for="ccnumber">Card Number:</label>
+        <input type="text" id="ccnumber" pattern="[0-9]{13,19}" maxlength="19" placeholder="1234 5678 9012 3456" />
+
+        <div style="display:flex; gap:10px;">
+          <div style="flex:1;">
+            <label for="expdate">Exp. Date:</label>
+            <input type="text" id="expdate" pattern="(0[1-9]|1[0-2])\/\d{2}" maxlength="5" placeholder="MM/YY" />
+          </div>
+          <div style="flex:1;">
+            <label for="cvc">CVC:</label>
+            <input type="text" id="cvc" pattern="[0-9]{3,4}" maxlength="4" placeholder="123" />
+          </div>
+        </div>
+      </div>
+      <h2 style="margin-top:22px;">Payment Details</h2>
+      <label for="ccname">Cardholder Name:</label>
+      <input type="text" id="ccname" required />
+      
+      <label for="ccnumber">Card Number:</label>
+      <input type="text" id="ccnumber" pattern="[0-9]{13,19}" maxlength="19" placeholder="1234 5678 9012 3456" required />
+      
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1;">
+          <label for="expdate">Exp. Date:</label>
+          <input type="text" id="expdate" pattern="(0[1-9]|1[0-2])\/\d{2}" maxlength="5" placeholder="MM/YY" required />
+        </div>
+        <div style="flex:1;">
+          <label for="cvc">CVC:</label>
+          <input type="text" id="cvc" pattern="[0-9]{3,4}" maxlength="4" placeholder="123" required />
+        </div>
+      </div>
+
+      <!-- PayPal Payment -->
+      <div id="paypal-fields" style="display:none; margin-top:10px;">
+        <label for="paypal-email">PayPal Email:</label>
+        <input type="email" id="paypal-email" placeholder="you@email.com" />
+      </div>
+      <!-- Mobile Wallet Payment -->
+      <div id="wallet-fields" style="display:none; margin-top:10px;">
+        <label for="wallet-type">Select Wallet:</label>
+        <select id="wallet-type">
+          <option value="">Select Mobile Wallet</option>
+          <option value="applepay">Apple Pay</option>
+          <option value="googlepay">Google Pay</option>
+          <option value="samsungpay">Samsung Pay</option>
+        </select>
+        <label for="wallet-phone">Mobile Number:</label>
+        <input type="tel" id="wallet-phone" placeholder="(555) 555-5555" />
+      </div>
+      <!-- Amount -->
+      <label for="amount" style="margin-top:12px;">Amount Being Paid:</label>
+      <input type="number" id="amount" value="1326.13" required />
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top:20px;">
+        <button type="button" style="background:gray; color:#fff; padding:8px 20px;">Clear All</button>
+        <button type="button" style="background:orange; color:#fff; padding:8px 20px;">Cancel</button>
+        <button type="button" style="background:green; color:#fff; padding:8px 20px;">Confirm</button>
+        <button type="button" style="background:blueviolet; color:#fff; padding:8px 20px;">Check Out</button>
+        <button type="button" style="background:red; color:#fff; padding:8px 20px;">Close</button>
+      </div>
+    </form>
+    <script>
+      function showPaymentFields() {
+        const payment = document.getElementById('payment-method').value;
+        document.getElementById('card-fields').style.display = payment === 'card' ? 'block' : 'none';
+        document.getElementById('paypal-fields').style.display = payment === 'paypal' ? 'block' : 'none';
+        document.getElementById('wallet-fields').style.display = payment === 'wallet' ? 'block' : 'none';
+      }
+    </script>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2025 BoutiqueBliss. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoutiqueBliss - About Us</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="logo">
+                <h2>BoutiqueBliss</h2>
+            </a>
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="invoice.html">Invoice</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="checkout.html">Check Out</a></li>
+            </ul>
+            <button class="login-btn">LOG IN</button>
+        </nav>
+    </header>
+
+    <main class="about-container">
+        <h1>🌟 Our Story: Dressing the World with Bliss</h1>
+        <section class="mission-vision">
+            <h2>Our Mission</h2>
+            <p>At BoutiqueBliss, we believe that <strong>style should be accessible</strong> and <strong>fashion should be fearless</strong>. Our mission is to curate a collection that empowers every individual to express their unique personality without compromising on quality or value.</p>
+            <h2>Our Vision</h2>
+            <p>To be the leading online destination for modern, sustainable, and trend-setting apparel that makes every customer feel confident and beautiful.</p>
+        </section>
+        <section class="value-proposition">
+            <h2>Why Choose BoutiqueBliss?</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Quality Focused</h3>
+                    <p>We hand-select materials to ensure every piece is durable and comfortable.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Sustainable Sourcing</h3>
+                    <p>We partner with ethical manufacturers committed to eco-friendly practices.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Customer Happiness</h3>
+                    <p>Our 24/7 support team is dedicated to making your shopping experience seamless.</p>
+                </div>
+            </div>
+        </section>
+        <section class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>Have questions? Email us at <a href="mailto:support@boutiquebliss.com">support@boutiquebliss.com</a> or call us at (555) 123-4567.</p>
+        </section>
+        <hr style="margin: 30px 0;">
+        <section class="academic-details">
+            <h2>Developer & Academic Details</h2>
+            <ul style="line-height: 2;">
+                <li><strong>Full Name:</strong> Jada-Kay Durrant</li>
+                <li><strong>ID#:</strong> 2409635</li>
+                <li><strong>Email:</strong> <a href="mailto:jada-kaykdurrant@students.utech.edu.jm">jada-kaykdurrant@students.utech.edu.jm</a></li>
+                <li><strong>Module Code:</strong> CIT2011</li>
+                <li><strong>Assignment Name:</strong> Individual Assignment Project</li>
+                <li><strong>Day/Time of Class:</strong> Wednesday, 10:00 AM - 12:00 PM</li>
+            </ul>
+            <p>
+                For direct customer queries to the company, 
+                <a href="mailto:jada-kaykdurrant@students.utech.edu.jm?subject=Customer%20Query%20for%20Boutique%20Bliss">
+                    click here to email BoutiqueBliss
+                </a>.
+            </p>
+        </section>
+    </main>
+    <script>
+    // Animate the main header on load
+    document.addEventListener("DOMContentLoaded", function() {
+        const header = document.querySelector("main h1");
+        header.style.transition = "transform 1s, color 1s";
+        header.style.transform = "scale(1.15)";
+        header.style.color = "#9c27b0";
+        setTimeout(function() {
+        header.style.transform = "scale(1)";
+        header.style.color = "";
+        }, 1600);
+    });
+
+    // Copy academic email to clipboard
+    function copyEmail() {
+        const email = "jada-kaykdurrant@students.utech.edu.jm";
+        navigator.clipboard.writeText(email).then(function() {
+        alert("Email copied to clipboard!");
+        });
+    }
+
+    // Smooth scroll to academic section
+    document.querySelector(".academic-details h2").addEventListener("click", function() {
+        document.querySelector(".academic-details").scrollIntoView({behavior: "smooth"});
+    });
+
+    // Alert when mailto link is clicked
+    document.querySelectorAll("a[href^='mailto:']").forEach(function(link) {
+        link.addEventListener("click", function() {
+        setTimeout(function() {
+            alert("Thanks for reaching out! We’ll respond soon.");
+        }, 500);
+        });
+    });
+    </script>
+</body>
+</html>
